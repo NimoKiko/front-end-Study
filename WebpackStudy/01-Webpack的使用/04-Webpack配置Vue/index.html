@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+webpack配置Vue：
+1.执行命令：npm install vue@2.5.21 --save 安装vue
+本样例中对应版本号为：
+webpack：3.6.0
+vue：2.5.21
+2.在webpack.config.js文件中添加如下代码：
+ resolve: {
+    //alias：别名
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  }
+其和module，output，entry平级
+3.运行命令：npm run build 打包文件后运行项目即可
+-->
+<!--
+Vue的终极使用方案总结：
+最早的时候，所有的template代码都是写在.html文件中的，但是基于Vue框架模块化的处理模式，实际开发中，我们习惯于将所有的template代码从
+.html文件中抽离出来，在.html文件中只保留 <div id="app"></div> 这一项，而抽离出来的template代码则放到.vue文件中，在.vue文件中有这样的一个模板
+其中包括，可以存放template代码的template标签，用于写js代码的script标签，还有用于写样式的style标签。而我们只需要在main.js文件中引用.vue文件，
+在main.js文件中以如下方式创建Vue实例即可：
+new Vue({
+  el:'#app',
+  template: '<App/>',
+  components: {
+    App
+  }
+})
+类似使用组件的方式
+但是要解析.vue文件需要安装vue-loader以及vue-template-compiler并在webpack.config.js文件中进行配置
+在终端执行如下命令：
+npm install --save-dev vue-loader@15.4.2 vue-template-compiler@2.5.21
+对应版本号为：
+vue-loader：15.4.2
+vue-template-compiler：2.5.21
+然后在webpack.config.js文件中进行如下配置：
+module: {
+    rules: [
+      {
+        //
+        test: /\.vue$/,
+        use: ['vue-loader']
+      }
+    ],
+  },
+最后运行 npm run build进行编译即可
+-->
+<div id="app"></div>
+<script src="./dist/bundle.js"></script>
+</body>
+</html>

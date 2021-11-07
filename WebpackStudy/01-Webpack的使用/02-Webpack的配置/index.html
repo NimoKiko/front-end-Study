@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+1.一旦项目中依赖nodejs的包，最后在项目开始时创建package.json文件
+2.命令：npm init
+3.在生成的package.json文件的script属性下创建新的映射，build将webpack命令和npm run build命令关联
+tips:使用npm run build 命令进行打包会优先在本地的webpack找，进行打包
+-->
+<!--
+最好除了有全局的webpack之外还要安装一个本地的webpack，
+这是为了避免使用别人的项目时，因为版本不同的问题而导致的项目报错。
+这就是开发时依赖
+命令：npm install webpack@版本号 --save-dev
+-->
+<!--
+js代码打包总结：
+1.在终端使用命令：npm init 创建package.json文件
+2.先创建webpack.config.js配置文件，在这个文件中配置好使用webpack打包程序的入口和出口
+3.在package.json文件的scripts属性中新建 build:"webpack"
+4.在终端中使用命令：npm install webpack@版本号 --save-dev 创建本地webpack
+5.在终端中输入命令：npm run webpack 就可以进行打包了
+-->
+<script src="./dist/bundle.js"></script>
+</body>
+</html>

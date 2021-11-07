@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+        function Person(name,age){
+
+            this.name = name;
+            this.age = age;
+
+        }
+
+        // 创建一些person对象
+        var per1 = new Person("王熙博",21);
+        var per2 = new Person("黄逸凡",18);
+        var per3 = new Person("李殿良",31);
+        var per4 = new Person("av",12);
+        var per5 = new Person("ss",2);
+        var per6 = new Person("dd",9);
+
+        var perArr = [per1, per2,per3,per4,per5,per6];
+
+        function getAudlt(arr){
+
+            var newArr = [];
+
+            for(var i=0 ; i<arr.length ;i++){
+                if(arr[i].age>=18){
+                    newArr.push(arr[i]);
+                }
+
+            }
+
+            return newArr;
+        }
+
+        var result = getAudlt(perArr);
+        console.log(result);
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

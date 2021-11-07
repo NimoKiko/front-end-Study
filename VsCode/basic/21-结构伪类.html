@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    
+        /* 使用css3中的结构伪类选择器来匹配元素 */
+        /* 匹配第一个孩子的格式： E：first-child{属性：值} */
+        .box ul li:first-child{
+            color: palevioletred;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border: plum 1px solid;
+        }
+        /* 匹配最后一个孩子 */
+        .box ul li:last-child{
+            color: salmon;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border: plum 1px solid;
+        }
+        /* 匹配第n个孩子 格式：nth-child(n)*/
+        /* 匹配第四个孩子 */
+        .box ul li:nth-child(4){
+            color: crimson;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border: plum 1px solid;
+        }
+        /* 匹配偶数个孩子 */
+        .box ul li:nth-child(even){
+            color: lime;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border: plum 1px solid;
+        }
+        /* 匹配奇数个孩子 */
+        .box ul li:nth-child(odd){
+            color: lime;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border: plum 1px solid;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+            <li>开开心心浪浪钉</li>
+        </ul>
+    </div>
+</body>
+</html>

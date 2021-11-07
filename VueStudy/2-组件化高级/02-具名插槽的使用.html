@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+
+<div id="app">
+  <cpn><span slot="center">标题</span></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+<!--    如果组件中包含多个插槽的情况下，想要修改其中一个插槽的内容的时候如果不给插槽命名的话-->
+<!--    会无法定位到是哪个插槽需要替换，从而导致全部插槽都被替换的情况-->
+<!--    解决方法：给插槽命名-->
+    <slot name="left"><span>左边的</span></slot>
+    <slot name="center"><span>中间的</span></slot>
+    <slot name="right"><span>右边的</span></slot>
+  </div>
+</template>
+
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+
+    },
+    methods:{
+
+    },
+    computed:{
+
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+      }
+    }
+  })
+</script>
+</body>
+</html>

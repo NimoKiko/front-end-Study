@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+配置文件的分离
+执行如下指令：npm install webpack-merge@4.1.5 --save-dev
+将全部的配置文件按照生产时需要用到的依赖和开发时需要用到的依赖区分好，在配置文件中引入
+const webpackMerge = require('webpack-merge')
+同时还需要将配置文件一并引入
+eg：const baseConfig = require('./base.config')
+module.exports = webpackMerge(baseConfig,{
+  plugins: [
+    new UglifyjsWebpackPlugin()
+  ],
+})
+-->
+<div id="app"></div>
+
+</body>
+</html>

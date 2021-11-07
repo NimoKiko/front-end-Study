@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+        var num = 214;
+        var ge , shi , bai;
+        var sum = 0;
+
+
+        for(num = 100 ; num < 1000 ; num++){
+            
+            // 获取百位数字
+            bai = parseInt( num/100 );
+            // 获取十位数
+            shi = parseInt((num - 100*bai) / 10); 
+            // 获取个位数
+            ge = num - bai*100 - shi*10;
+
+            if(Math.pow(bai,3) + Math.pow(shi,3) + Math.pow(ge,3) == num){
+                sum = sum + num;
+                // alert(num)
+            }
+        }
+
+        alert(sum);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

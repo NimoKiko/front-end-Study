@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+   
+    <div id="app">
+      <h2>这里有个数字：{{count}}</h2>
+      <cpn @current-num="receiveInfo"></cpn>
+    </div>
+
+    <template id="cpn">
+      <div>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+      </div>
+    </template>
+  
+    <script>
+
+      const cpn = {
+        template:'#cpn',
+        data(){
+          return{
+            num:0
+          }
+        },
+        methods:{
+          increment(){
+            this.num++;
+            this.$emit('current-num',this.num);
+          },
+          decrement(){
+            this.num--;
+            this.$emit('current-num',this.num);
+          }
+        }
+      }
+
+      const app = new Vue({
+        el:'#app',
+        data:{
+          count:0
+        },
+        methods:{
+          receiveInfo(e) {
+            this.count = e;
+          }
+        },
+        computed:{
+  
+        },
+        components:{
+          cpn
+        }
+      })
+    </script>
+</body>
+</html>

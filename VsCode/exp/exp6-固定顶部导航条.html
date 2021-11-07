@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .nav{
+        width: 100%;
+        height: 60px;
+        background-color: #222;
+        /* 使用固定定位 */
+        position: fixed;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+    }
+    .nav .inner_c{
+        width: 1000px;
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        /* background-color: aqua; */
+    }
+    ul{
+        list-style: none;
+    }
+    ul li {
+        float: left;
+        width: 12.5%;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+    }
+    ul li a{
+        display: block;
+    }
+    a:link{
+        text-decoration: none;
+        color: beige;
+    }
+    a:visited{
+        color: beige;
+    }
+    a:hover{
+        color: rgb(26, 26, 25);
+        background: beige;
+        font-weight: bold;
+        
+    }
+    body{
+        padding-top: 70px;
+    }
+    p{
+        width: 100px;
+        height: 30px;
+        background-color: paleturquoise;
+        /* 相对定位 */
+        position: relative;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="inner_c">
+            <ul>
+                <li><a href="#">网站栏目</a></li>
+                <li><a href="#">网站栏目</a></li>
+                <li><a href="#">网站栏目</a></li>
+                <li><a href="#">网站栏目</a></li>
+                <li><a href="#">网站栏目</a></li>
+                <li><a href="#">网站栏目</a></li>
+                <li><a href="#">网站栏目</a></li>
+                <li><a href="#">网站栏目</a></li>
+            </ul>
+        </div>
+    </div>
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <p>猜猜我在哪</p>
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <img src="../images/gongjun.JPG" alt="俊俊">
+    <img src="../images/gongjun.JPG" alt="俊俊">
+</body>
+</html>

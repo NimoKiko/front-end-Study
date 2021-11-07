@@ -1,0 +1,32 @@
+body{
+    background-color: grey;
+}
+.more{
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    /* border: 1px solid salmon; */
+    background-color: white;
+    text-align: center;
+    margin:100px auto;
+    border-radius: 15px;
+    
+}
+a{
+    display: block;
+    width: 60px;
+    height: 30px;
+}
+a:link{
+    color: black ;
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+}

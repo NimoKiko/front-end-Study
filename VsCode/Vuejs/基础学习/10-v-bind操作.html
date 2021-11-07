@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <img v-bind:src="imgURL" alt="">
+      <a v-bind:href="aURL">百度一下</a>
+
+      <!-- 语法糖的写法:直接加冒号 -->
+      <img :src="imgURL" alt="">
+
+    </div>
+  
+    <script src='vue.js'>
+    </script>
+    <script>
+      const app = new Vue({
+      el:'#app',
+      data:{
+        imgURL:'https://img.alicdn.com/bao/uploaded/i4/385132127/O1CN01XO3C3m1RaD8dq5tDd_!!0-item_pic.jpg_468x468q75.jpg_.webp',
+        aURL:'http://baidu.com'
+      },
+       
+      methods:{
+  
+      }
+  })
+    </script>
+</body>
+</html>

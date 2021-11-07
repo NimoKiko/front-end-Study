@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+        }
+
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function(){
+            /* 
+            点击按钮后修改box1的尺寸
+             */
+            // 获取box1
+            var box1 = document.getElementById("box1");
+            // 为按钮绑定点击事件
+            // 获取按钮
+            var btn01 = document.getElementById("btn01");
+
+            btn01.onclick = function(){
+                // 修改box1大小
+                /* 
+                通过JS修改元素样式
+                语法：元素.style.样式名 = 样式值
+                注意：如果CSS样式名中含有减号，在JS中是不合法的
+                    需要将这种样式名修改为驼峰命名法
+                */
+                // box1.style.width = "400px";
+                // box1.style.backgroundColor = "yellow";
+                /* 
+                获取元素当前显示的样式
+                语法： 元素.currentStyle.样式名
+                它可以用来获取当前元素显示的样式
+                只有IE浏览器支持
+                在其他浏览器中可以使用getComputedStyle()
+                    - 需要两个参数
+                    - 第一个：要获取样式的元素
+                    - 第二个：可以传递一个伪元素，一般传none
+                该方法不支持IE8及以下浏览器
+                上述两种方法都是只读的，如果想要修改必须使用.Style
+                */
+                // alert(box1.currentStyle.backgroundColor);
+                var obj = getStyle(box1,"backgroundColor");
+
+                alert(obj);
+
+
+            };
+
+            /* 
+            该方法用于兼容其他浏览器和IE浏览器在获取元素样式的时候浏览器不兼容的问题
+                - obj：要获取样式的元素
+                - name：要获取的样式名
+            */
+            function getStyle( obj , name){
+
+                if(window.getComputedStyle){
+                    // 其他浏览器获取样式
+                    return getComputedStyle(obj,null)[name];
+                }else{
+                // IE8获取样式
+                return obj.currentStyle[name];
+                }
+                
+
+
+            }
+
+
+
+        };
+        
+    
+    </script>
+    <button id="btn01">点我一下</button>
+
+    <br/><br/>
+
+    <div id="box1" style="background-color: cadetblue;"></div>
+</body>
+</html>

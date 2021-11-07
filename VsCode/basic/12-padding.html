@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .box{
+            width: 300px;
+            height: 100px;
+            border: coral 1px solid;
+            /* 使用小属性来描述内填充 */
+            /* 上内填充 */
+            padding-top: 20px;
+            /* 右内填充 */
+            padding-right: 30px;
+            /* 下内填充 */
+            padding-bottom: 40px;
+            /* 左内填充 */
+            padding-left: 50px;
+
+        }
+        .box2{
+            width: 300px;
+            height: 100px;   
+            border: coral 1px solid;
+            /* 使用简洁属性描述内填充 */
+            /* 如果只有一个数值则表示上下左右四个方向的内填充一致 */
+            /* padding:20px; */
+            /* 如果输入多个数值，则四个数值对应的内填充方向分别为上、右、下、左 */
+            padding: 20px 30px 40px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">开开心心浪浪钉</div>
+    <div class="box2">开开心心浪浪钉2</div>
+</body>
+</html>

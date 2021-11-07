@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--slot相当于给组件预留了一个位子，你想插入什么就能插入什么-->
+<!--组件间扩展的标签可以不一样，这也就是所谓的扩展性-->
+<!--抽取共性，保留不同-->
+<script src="../js/vue.js"></script>
+
+<div id="app">
+<!--  在组件标签中间写标签就会填入预留插槽的位置-->
+  <cpn><button>按钮</button></cpn>
+  <cpn><i>呵呵呵</i></cpn>
+<!--  在组件中写入多个标签，会全部放入插槽的位置，全部显示-->
+  <cpn>
+    <input type="text">
+    <h3>sahsihid</h3>
+    <h4>aksna</h4>
+  </cpn>
+  <cpn></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>我是组件</h2>
+    <p>我是组件。。。。</p>
+<!--    在插槽中写入的标签相当于设置一个默认值，如果组件不特别设置则会使用默认标签-->
+    <slot><button>按钮</button></slot>
+  </div>
+</template>
+
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+
+    },
+    methods:{
+
+    },
+    computed:{
+
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+      }
+    }
+  })
+</script>
+</body>
+</html>

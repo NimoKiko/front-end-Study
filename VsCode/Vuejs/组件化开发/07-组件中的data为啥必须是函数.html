@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+   <!-- 创建了三个组件实例 -->
+   <!-- 但是每个组件实例不共用同一个data对象 -->
+   <!-- 因为data对象是一个函数，这也是为什么data对象必须是一个函数 -->
+    <div id="app">
+      <cpn-count></cpn-count>
+      <cpn-count></cpn-count>
+      <cpn-count></cpn-count>
+    </div>
+    <template id="cpn">
+      <div>
+        <h2>当前计数：{{num}}</h2>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+      </div>
+      
+
+    </template>
+
+
+
+    <script>
+
+      Vue.component('cpn-count',{
+        template:'#cpn',
+        data(){
+          return {
+            num:0
+          }
+        },
+        methods:{
+          increment(){
+            this.num++
+          },
+          decrement(){
+            this.num--
+          }
+        }
+      })
+
+
+      const app = new Vue({
+        el:'#app',
+        data:{
+  
+        },
+        methods:{
+  
+        }
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .box{
+            width: 40%;
+            /* 让当前元素水平居中 */
+            margin: 100px auto;
+            font-size: 14px;
+            border: 1px salmon solid;
+            color: seagreen;
+        }
+        /* 操作当前元素中的第一个字 */
+        .box:first-letter{
+            color: steelblue;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        /* 操作当前元素中的第一行字 */
+        .box::first-line{
+            color: teal;
+            font-weight:bold;
+            font-size: 32px;
+        }
+        /* 在当前元素的前面插入文字必须将文字放入content中 */
+        .box::before{
+            content: "柑橘栀子花";
+        }
+        /* 在当前元素的最后插入文字 */
+        .box::after{
+            content: "搞江西猫";
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">所谓活到老，学到老，虽然我感觉自己已经学了很多算法了，但是昨天熬夜整理完以后发现，自己还是个弟弟，实在忍不住了，打算把 算法学习路线 发出来，我把整个算法学习的阶段总结成了五个步骤，分别为：基础语法学习、语法配套练习、数据结构、算法入门、算法进阶。本文梳理了这五个大项的思维导图，在下文会有详细介绍。
+          希望各位能够找到自己的定位，通过自己的努力在算法这条路上越走越远。
+          刚开始切勿心浮气躁，千万不要给自己立 flag，说一定要把这么多东西都学会。就算你的精力旺盛，日夜操劳，时间也是有限的。所以，首先是明确我们要做什么，然后制定好一个合理的 目标 ，再一点一点将要学习的内容逐步付诸实践才是最重要的。
+        </div>
+</body>
+</html>

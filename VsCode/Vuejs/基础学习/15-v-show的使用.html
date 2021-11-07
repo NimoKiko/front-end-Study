@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <!-- 与v-if不同的是，v-show为false时相当于给添加了行内样式display：none -->
+      <!-- v-if为false的时候，相当于把整个语句都删除了 -->
+      <!-- 开发中，如果切换的频率比较高时，使用v-show，如果只切换一次就使用v-if -->
+      <h2 v-show='isShow'>{{message}}</h2>
+    </div>
+  
+    <script src='vue.js'></script>
+    <script>
+      const app = new Vue({
+      el:'#app',
+      data:{
+        message:'你好啊',
+        isShow:true
+      },
+      methods:{
+  
+      }
+  })
+    </script>
+</body>
+</html>

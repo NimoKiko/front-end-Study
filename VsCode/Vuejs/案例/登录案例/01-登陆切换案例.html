@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <span v-if="isAccount">
+        <label for="username">用户账号：</label>
+        <!-- 由于一些Vue底层的原因，在切换输入框的时候，Vue底层采用了虚拟DOM的方法来提高性能 -->
+        <!-- 这就导致虽然因为判断语句会使得输入框的h5代码发生变化，但是输入了的文字不会因为输入框的修改而改变 -->
+        <!-- 可以使用一个key属性进行标识，业务中会对比两个key值是否相同，如果不同就不会复用，从而实现切换输入框后文字内容不改变的bug -->
+        <input type="text" placeholder="用户账号" id="username" key="username">
+      </span>
+
+      <span v-else>
+        <label for="email">邮箱登录：</label>
+        <input type="text" placeholder="邮箱地址" id="email" key="email">
+      </span>
+
+      <button @click="changeType">切换类型</button>
+      
+    </div>
+  
+    <script src='vue.js'></script>
+    <script>
+      const app = new Vue({
+      el:'#app',
+      data:{
+        isAccount:true
+      },
+      methods:{
+        changeType(){
+          this.isAccount = !this.isAccount
+        }
+      }
+  })
+    </script>
+</body>
+</html>

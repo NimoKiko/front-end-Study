@@ -1,0 +1,40 @@
+h1{
+    color: brown;
+    font-size: 36px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.range1{
+    width: 500px;
+}
+
+.range2{
+    width: 500px;
+    
+}
+
+.p1{
+    color: cadetblue;
+    font-size: 22px;
+    font-family: 楷体;
+    
+}
+
+.p2{
+    color: coral;
+    font-size: 32px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: darkcyan;
+    font-style: italic;
+}
+
+.first{
+    color: darkslateblue;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.img1{
+    width: 500px;
+    
+}

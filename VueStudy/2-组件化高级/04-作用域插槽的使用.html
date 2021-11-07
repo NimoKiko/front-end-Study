@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--作用域插槽的作用：-->
+<!--父组件替换插槽的标签，但是内容由子组件来提供-->
+<script src="../js/vue.js"></script>
+
+<div id="app">
+  <cpn></cpn>
+  <cpn>
+<!--    目的是获取子组件中的pLanguages数据    -->
+<!--    给子组件的插槽标签绑定data属性后，在父组件使用组件时需要在子组件标签内部添加template标签-->
+<!--    并给template标签添加slot-scope=“slot"属性（此处为固定操作），之后就能使用子组件中的数据了-->
+    <template slot-scope="slot">
+<!--      如果你在在子组件的作用域插槽中绑定的属性名字娶了abc，那么调用的时候也要用slot.abc才能成功-->
+      <span v-for="items in slot.abc">{{items}} - </span>
+    </template>
+  </cpn>
+  <cpn>
+    <template slot-scope="slot">
+<!--      join()方法可以把数组转化为字符串，并以一个东西连接多个字符串-->
+      <span>{{slot.abc.join('--')}}</span>
+    </template>
+  </cpn>
+</div>
+
+<template id="cpn">
+  <div>
+<!--    作用于插槽使用的时候，绑定的这个东西名字可以是自定义的，不是一定要叫data-->
+    <slot :abc="pLanguages">
+      <ul>
+        <li v-for="items in pLanguages">{{items}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+
+    },
+    methods:{
+
+    },
+    computed:{
+
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+        data(){
+          return{
+            pLanguages:['javaScript','C++','java','python']
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

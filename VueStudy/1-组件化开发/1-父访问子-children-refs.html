@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--$children是用来使父组件直接获取子组件中元素的方法-->
+<!--一般开发中不常用$children因为涉及到下标，如果在后期子组件集群中新插入一个子组件-->
+<!--下标就会改变，这时候使用$children就得去修改下标，太麻烦-->
+<script src="../js/vue.js"></script>
+
+<div id="app">
+  <cpn></cpn>
+  <cpn ref="aaa"></cpn>
+  <cpn></cpn>
+  <button @click="btnClick">按钮</button>
+</div>
+
+<template id="cpn">
+  <div>我是子组件</div>
+</template>
+
+<script>
+
+  const app = new Vue({
+    el:'#app',
+    data:{
+
+    },
+    methods:{
+      btnClick(){
+        //1.使用$children获取子组件的元素
+        // console.log(this.$children);
+        // for(let c of this.$children){
+        //   console.log(c.name);
+        //   c.showMessage();
+
+        //2.使用$refs获取子组件对象
+        //必须在子组件引用的时候添加 ref='xxx'才能使用
+        console.log(this.$refs.aaa.name);
+      }
+    },
+    computed:{
+
+    },
+    components:{
+      cpn:{
+        template: '#cpn',
+        data(){
+          return {
+            name:'我是子组件的name'
+          }
+        },
+        methods:{
+          showMessage(){
+            console.log("showMessage");
+          }
+        }
+      }
+
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+
+/* 给body标签设置样式 */
+body{
+    font-size: 20px;    
+    color: coral;
+}
+
+/* 给div设置边框 */
+.box{
+    width: 600px;
+    border: 1px black solid;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 设置h2标签的样式 */
+.box h2{
+    height: 45px;
+    line-height: 45px;
+    color: cadetblue;
+}
+/* 去除li前面的小圆点 */
+.box ul li{
+    list-style-type: none;
+    height: 30px;
+    line-height: 30px;
+    /* 给每一个li标签设置背景图片 */
+    background-image: url(../images/ic_daily.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    /* 左内填充 */
+    /* padding属性设置盒子内的内容到边框线的距离 */
+    padding-left: 30px;
+}
+/* 伪类选择器 */
+a:link{
+    color:darksalmon;
+    text-decoration:none;
+}
+a:visited{
+    color: darksalmon;
+    text-decoration: none;
+}
+a:hover{
+    color: royalblue;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+

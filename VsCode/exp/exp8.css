@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.box{
+    width: 308px;
+    height: 308px;
+    border: cornflowerblue solid 1px;
+    margin: 100px auto;
+    position: relative;
+}
+
+.box span{
+    /* 绝对定位 */
+    position: absolute;
+    left: 20px;
+    top: -20px;
+}

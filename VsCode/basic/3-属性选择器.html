@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+
+        /* 通过属性选择器来匹配元素 */
+        /* 第一个：[属性名] */
+        /* [align]{
+            color: burlywood;
+        } */
+        /* 第二种 [属性名=值] */
+        /* [align="center"]{
+            color: cadetblue;
+        } */
+        /* 第三种[属性名^=值] */
+        /* 先找到font标签，再匹配color属性值以#FF开头的元素 */
+        /* font[color^="#FF"]{
+            border: hotpink 1px solid;
+        } */
+        /* 第四种[属性名$=值] */
+        /* 先找到font标签，再匹配color属性值以#00开头的元素 */
+        /* font[color$="00"]{
+            border: hotpink 1px solid;
+        } */
+        /* 第五种[属性名*=值] */
+        /* 匹配包含属性值的所有元素 */
+        /* 先找到font标签，再匹配color属性值中含有aa的元素 */
+        font[color*="aa"]{
+            border: hotpink 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="left">开开心心浪浪钉</h1>
+    <p align="center">俊哲是真的！！！</p>
+    <p align="right">俊哲是真的！！！</p>
+    <font color="#FF0000">颜色</font>
+    <font color="#FFAA00">颜色</font>
+    <font color="#AB0000">颜色</font>
+    <font color="#BC0000">颜色</font>
+    <font color="#FF00BC">颜色</font>
+    <font color="#FF0AB0">颜色</font>
+</body>
+</html>

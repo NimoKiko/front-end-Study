@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function Person( name , age , gender ){
+
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+
+        Person.prototype.toString = function(){
+            return "我叫"+this.name+"，我今年"+this.age+"岁，"+"我是一个"+this.gender+"性";
+        };
+
+        var per = new Person("张三",18,"男");
+        var per2 = new Person("王熙博",21,"男");
+
+        // per.toString = function(){
+        //     return "我叫"+this.name+"，我今年"+this.age+"岁，"+"我是一个"+this.gender+"性";
+        // }
+
+        console.log(per2.toString());
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

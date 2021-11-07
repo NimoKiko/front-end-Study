@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .active{
+    color: coral;
+  }
+</style>
+<body>
+    <div id="app">
+      <ul>
+        <li @click='clickIt(index)' :class="{active:cuurentIndex==index}" v-for="(things,index) in movies">{{index}}--{{things}}</li>
+      </ul>
+    </div>
+  
+    <script src='vue.js'></script>
+    <script>
+      const app = new Vue({
+      el:'#app',
+      data:{
+        movies:['戚时安','沈多意','火影忍者','进击的巨人'],
+        cuurentIndex:0
+      },
+      methods:{
+        clickIt: function(index){
+          this.isActive = index;
+        }
+      }
+  })
+    </script>
+</body>
+</html>

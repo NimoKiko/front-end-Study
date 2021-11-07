@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+// 1.使用stTimeout
+//   setTimeout( () => {
+//     console.log('等待了一秒钟');
+//   },1000)
+
+  //参数-->函数(resolve,reject)
+  //resolve 和 reject 本身也是函数
+  //链式编程
+  new Promise( (resolve,reject) => {
+    //将异步操作封装到Promise里面
+    //第一次网络请求的代码
+    setTimeout( () => {
+      resolve()
+    },1000)
+  }).then( () => {
+    //第一次拿到结果的处理代码
+    console.log('等待了一秒钟');
+  }
+  //
+  //   return new Promise((resolve, reject) => {
+  //     //第二次网络请求的代码
+  //     setTimeout(() => {
+  //       resolve()
+  //     },1000)
+  //   }).then( () => {
+  //     // 第二次处理的代码
+  //     console.log('等待了两秒钟');
+  //     console.log('等待了两秒钟');
+  //     console.log('等待了两秒钟');
+  //     console.log('等待了两秒钟');
+  //     console.log('等待了两秒钟');
+  //     console.log('等待了两秒钟');
+  //
+  //     new Promise((resolve, reject) => {
+  //       //第三次网络请求的代码
+  //       setTimeout(() => {
+  //         resolve()
+  //       },1000)
+  //     }).then(() => {
+  //       //第三次处理的代码
+  //       console.log('等待了三秒钟');
+  //       console.log('等待了三秒钟');
+  //       console.log('等待了三秒钟');
+  //       console.log('等待了三秒钟');
+  //       console.log('等待了三秒钟');
+  //       console.log('等待了三秒钟');
+  //     })
+  //   })
+  // })
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //成功的时候调用resolve
+      // resolve('hello world')
+
+      //失败的时候调用reject
+      reject('error message')
+    })
+  }).then((data) => {
+    console.log(data);
+    console.log(data);
+    console.log(data);
+    console.log(data);
+  }).catch(err => {
+    console.log(err);
+  })
+
+</script>
+</body>
+</html>

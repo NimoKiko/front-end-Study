@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+一些插件的汇总及使用方法：
+1.BannerPlugin：此插件可以在打包完之后对文件进行版权声明
+使用方法：
+  在webpack.config.js文件中通过CommonJS模式引入webpack，并在下方创建plugin对象，在其中进行如下操作即可：
+  new webpack.BannerPlugin('最终版权归xxx所有'),
+
+2.html-webpack-plugin：该插件可以在打包后在dist目录下创建index.html文件
+使用方法：
+  1.在终端执行命令：npm install html-webpack-plugin@3.2.0 --save-dev 安装插件
+  2.在webpack.config.js文件中进行如下配置：
+    const HtmlWebpackPlugin = require('html-webpack-plugin')
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    }),
+  3.打包运行即可
+
+3.uglifyjs-webpack-plugin:对js文件进行压缩
+使用方法：
+  1.在终端执行命令：npm install uglifyjs-webpack-plugin@1.1.1 --save-dev 安装插件
+  2.在webpack.config.js文件中进行如下配置：
+    const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
+    new UglifyjsWebpackPlugin()
+-->
+
+<!--
+搭建本地服务器：
+目的：不用每次修改完代码都进行npm run build 的操作，配置完毕后，只需要最后进行一次打包即可，服务器会实时监听你的修改
+实现方法：
+  1.执行命令：npm install webpack-dev-server@2.9.3 --save-dev
+
+-->
+<div id="app"></div>
+
+</body>
+</html>

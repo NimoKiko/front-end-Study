@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <h2>{{fullName}}</h2>
+    </div>
+  
+    <script src='vue.js'></script>
+    <script>
+      const app = new Vue({
+      el:'#app',
+      data:{
+        firstName:'龚',
+        lastName:'俊'
+      },
+      methods:{
+  
+      },
+      computed:{
+        // fullName: function(){
+        //   return this.firstName+' '+this.lastName
+        // }
+        fullName:{
+          // 一般情况下set方法不使用
+          // set方法一般删除
+          // 如果要实现set方法的话，需要传递一个参数
+          set:function(newValue){
+            const names = newValue.split(' '); //split()函数可以用来切割字符串，传入的参数为从哪开始切割并保存到数组中
+            this.firstName = names[0];
+            this.lastName = names[1];
+          },
+          get: function(){
+            return this.firstName+' '+this.lastName
+          }
+        }
+      }
+  })
+    </script>
+</body>
+</html>

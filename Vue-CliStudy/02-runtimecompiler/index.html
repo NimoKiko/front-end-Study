@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>runtimecompiler</title>
+  </head>
+  <body>
+<!--
+如果想要关闭eslint，可以在config文件夹下的index.js文件中找到useEslint这项，将属性设置为false即可
+-->
+<!--
+runtime-compiler和runtime-only的区别：
+1.如果使用runtime-compiler构建项目则在加载Vue实例时，会首先将template模板解析为ast（抽象语法树），
+后再通过render函数转化为虚拟DOM最后添加到UI上，但如果使用runtime-only则会直接通过render函数转化为虚拟DOM然后添加到UI上，
+2.二者比较下，runtime-only：性能更好，底层代码更少
+
+-->
+
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

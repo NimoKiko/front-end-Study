@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <base target="_blank"/>
+    <style type="text/css">
+
+        .box{
+            border: 1px solid grey;
+            width: 500px;
+            /* 外边距 HTML中的表格标记属性 cellspacing 表示单元格之间的距离 */
+            /* 在css中盒子与盒子之间的距离也称之为外边距 */
+            margin-left:auto ; /* 将左外边距设置为自动 */
+            margin-right: auto; /* 将右外边距设置为自动 */
+            
+        }
+        
+        .box h2{
+            color: lightcoral;
+            font-size: 32px;
+            font-family: 'Courier New', Courier, monospace;
+            border: lightskyblue;
+            height: 40px;
+            line-height: 40px;
+        }
+        .box li{
+            list-style-type: none;
+            height: 30px;
+            line-height: 30px;
+            color: salmon;
+        }
+
+        /* 后代元素选择器 */
+        .box ul{
+            /* 去除小圆点 */
+            /* list-style-type: none; */
+        }
+        .box ul li{
+            /* border:1px solid red; */
+            /* 将文字居中对齐需要将高度和行高设置成相同的值 */
+            /* height: 35px; */
+            /* line-height: 35px; */
+            /* 原点在框框内测or外侧 用的很少 */
+            /* list-style-position: inside; */
+            /* 将前面的小圆点换成自定义的图片 */
+            /* 首先将小圆点去除 */
+            /* list-style-type: none; */
+            /* 再将图片换上去 */
+            /* list-style-image: url(../images/gongjun.JPG); */
+            /* list-style 集成了上述三个属性的全部，用空格隔开。其属性值个数不定，位置也不定 */
+            /* list-style: none  url(../images/gongjun.JPG); */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>中国四大名著</h2>
+        <ul>
+            <li><a href="http://www.baidu.com">西游记</a></li>
+            <li>水浒传</li>
+            <li>红楼梦</li>
+            <li>三国演义</li>
+        </ul>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+<!--子组件在使用变量的时候，不会在子组件中的data中找-->
+<!--会首先看你的组件在哪个模板里面-->
+<!--以这个为例，cpn组件被使用在id为app的这个div内部，当组件使用变量的时候，会先在组件所在模板的实例中找变量-->
+<!--也就是会在Vue实例中寻找变量-->
+<!--如果在组件模板中使用了变量，就会在组件定义的component中找变量-->
+<div id="app">
+  <cpn v-show="isShow"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>我是子组件</h2>
+    <button v-show="isShow">按钮</button>
+  </div>
+</template>
+
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      isShow:true,
+    },
+    methods:{
+
+    },
+    computed:{
+
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+        data(){
+          return {
+            isShow:false
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

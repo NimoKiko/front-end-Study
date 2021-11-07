@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .box{
+            width: 1000px;
+            height: 600px;
+            border: black 1px solid;
+            margin-left: auto;
+            margin-right:auto;
+            background-image: url(../images/gongjun.JPG);
+            /* 设置图片不平铺 */
+            background-repeat: no-repeat;
+            /* background-position属性设置图片的位置 */
+            /* 按照right bottom设置则图片出现在右下 */
+            /* 水平方向可设置：left center right */
+            /* 垂直方向可设置：top center bottom */
+            background-position:right bottom ;
+            /* background-position还可以用固定值选择图片所处位置 */
+            background-position:100px 100px;
+            /* background-position还可以用百分比确定图片所处位置  */
+            background-position: 50% 50%;
+            /* 三种方式可混合使用 */
+            background-position: center 50%;
+            /* background-attachment属性可以设置背景图片是否固定 */
+            background-attachment: fixed;
+            /* 简写属性：background */
+            /* 可以同时设置多个样式，例如背景颜色，背景图片，背景图片是否平铺等等... */
+            background:url(../images/zhuomian.JPG) fixed center center no-repeat
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

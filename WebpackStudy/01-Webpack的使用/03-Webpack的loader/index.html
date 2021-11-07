@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+打包CSS文件总结：
+1.在main.js文件中导入需要使用的CSS文件（使用commonJS模式）
+2.在终端使用命令：npm install --save-dev css-loader@版本号 安装CSS-loader ：负责加载css文件
+3.在终端使用命令：npm install --save-dev style-loader@版本号 安装Style-loader ：负责解析并添加到DOM上
+特别注意！！！如果webpack版本为3.6.0，安装的css-loader和style-loader必须是低版本的
+本样例中的版本为如下配置：
+webpack: 3.6.0
+css-loader: 2.0.2
+style-loader: 0.23.1
+4.安装完毕后在webpack.config.js文件中添加如下配置：
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+};
+5.最后在终端执行命令：npm run build进行打包即可打包css文件
+-->
+
+<!--
+打包less文件总结：
+1.在main.js文件中导入需要使用的less文件（使用commonJS模式）
+2.在终端使用命令：$ npm install less less-loader --save-dev@版本号 安装less-loader和less ：负责加载less文件
+特别注意！！！如果webpack版本为3.6.0，安装的less-loader和less必须是低版本的
+本样例中的版本为如下配置：
+webpack: 3.6.0
+less-loader: 4.1.0
+less: 3.9.0
+4.安装完毕后在webpack.config.js文件中添加如下配置：
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.less$/i,
+        loader: [
+          // compiles Less to CSS
+          'style-loader',
+          'css-loader',
+          'less-loader',
+        ],
+      },
+    ],
+  },
+};
+5.最后在终端执行命令：npm run build进行打包即可打包less文件
+-->
+
+<!--
+加载图片操作总结：
+1.使用命令：npm install url-loader@版本号 --save-dev 安装url-loader
+2.使用命令：npm install file-loader@版本号 --save-dev 安装file-loader
+本样例中对应版本如下所示：
+webpack：3.6.0
+url-loader：1.1.2
+file-loader：0.9.0
+3.安装完url-loader和file-loader后在webpack.config.js文件的module中添加如下代码：
+module: {
+    rules: [
+
+      {
+        test: /\.(PNG|JPG|GIF|JPEG)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              //当加载图片时，小于limit时，会将图片编译成64base字符串的形式
+              //当加载图片时，大于limit时，需要使用file-loader模块进行加载
+              limit: 10000,
+              //name的配置主要作用是为了在打包图片时，生成的图片文件名不会乱七八糟
+              name: 'img/[name].[hash:8].[ext]'
+            }
+          }
+        ]
+      }
+    ],
+  },
+请注意！！！test中设置的文件后缀必须和图片文件的后缀完全一致，连大小写的要一摸一样！！！
+4.如果图片大小超过了限制的大小，则会使用file-loader对文件进行编译，并生成一个新的图片文件存放在dist目录下，
+需要在webpack.config.js文件下的output属性中添加一项 publicPath: 'dist/' ，如此，运行程序后，就会去dist目录下读取图片文件
+5.执行命令：npm run build 打包文件后运行即可
+-->
+
+<!--
+ES6转ES5的loader总结：
+1.在终端使用命令：npm install --save-dev babel-loader@7.1.5 babel-core@6.26.3 babel-preset-es2015@6.24.1
+本样例中的版本如下所示：
+webpack：3.6.0
+babel-loader 7.1.5
+babel-core 6.26.3
+babel-preset-es2015 6.24.1
+2.在webpack.config.js文件的module中添加如下代码：
+module: {
+  rules: [
+    {
+      test: /\.m?js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['es2015']
+        }
+      }
+    }
+  ]
+}
+3.运行命令：npm run build 打包后ES6就转化为ES5了
+-->
+<script src="./dist/bundle.js"></script>
+</body>
+</html>

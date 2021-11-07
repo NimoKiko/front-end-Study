@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+
+    <!-- 子组件传递信息给父组件需要使用自定义事件 -->、
+    <!-- 在子组件中包含的数据，通过绑定按钮的点击事件使用 this.$emit()方法发送一个自定义的事件 -->
+    <!-- 在父组件调用模板的地方通过v-on指令监听这个自定义事件创建接收信息的方法 -->
+    <!-- 父组件接收信息的方法书写在父组件的Vue实例中 -->
+   
+    <!-- 父组件 -->
+    <div id="app">
+      <!-- 通过v-on指令为这个自定义事件创建接收信息的方法 -->
+      <cpn @item-click="cpnClick"></cpn>
+  
+    </div>
+  
+    <!-- 子组件模板 -->
+    <template id="cpn">
+      <div>
+        <button v-for="items in categories" 
+                @click="btnClick(items)">
+          {{items.name}}
+        </button>
+      </div>
+
+    </template>
+
+    <script>
+
+
+      const cpn = {
+        template:'#cpn',
+        data(){
+          return{
+            categories:[
+              {id:'1' , name:'热门推荐'},
+              {id:'2' , name:'手机数码'},
+              {id:'3' , name:'家用家电'},
+              {id:'4' , name:'电脑办公'}
+            ]
+          }
+        },
+        methods:{
+          btnClick(item){
+            // 通过自定义事件传递信息
+            // 通过this.$emit()发射一个事件
+            // 父组件需要监听这个事件
+            // emit()的第一个参数为自定义事件名称，第二个参数为要传递的参数
+            this.$emit('item-click',item)
+          }
+        }
+      }
+
+      const app = new Vue({
+        el:'#app',
+        data:{
+  
+        },
+        methods:{
+          cpnClick(item){
+            console.log('传过来啦',item);
+          }
+        },
+        computed:{
+  
+        },
+        components:{
+          cpn
+        }
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.total{
+    border: cornflowerblue 1px solid;
+    width: 1000px;
+    height: 600px;
+}
+
+.box1{
+    border: cornflowerblue 1px solid;
+    width: 400px;
+    height: 250px;
+    float: left;
+}
+
+.box2{
+    border: cornflowerblue 1px solid;
+    width: 400px;
+    height: 300 px;
+    float: left;
+}
+
+button{
+    margin-bottom: 5px;
+}
+.inner{
+    margin-left: 10px;
+}
+
+li{
+    width: 80px;
+    height: 30px;
+    list-style-type: none;
+    border: cadetblue 1px solid;
+    background-color: cornflowerblue;
+    display: inline;
+}
