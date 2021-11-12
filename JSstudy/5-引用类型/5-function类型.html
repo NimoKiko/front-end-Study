@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script type="text/javascript">
+    /* 
+      有三种方式可以创建函数
+      1. 函数声明语法
+      function 函数名 (参数1,参数2,...){
+        函数体...
+      }
+
+      2. 函数表达式定义
+      var 函数名 = function(参数1,参数2,...){
+        函数体...
+      };
+
+      3. function构造函数定义函数（不推荐使用这种方式）
+      var 函数名 = new Function("参数1","参数2"...,"函数体...")
+    */
+    function add1(num1, num2) {
+      return num1 + num2;
+    }
+
+    var add2 = function (num1, num2) {
+      return num1 + num2;
+    };
+
+    console.log(add1(10, 20)); //输出30
+    console.log(add2(20, 30)); //输出50
+
+    /* 
+      函数中没有重载的概念，如果你定义了两个相同函数名的函数，后定义的函数会覆盖前面定义的函数
+    */
+    function addTest(params) {
+      return 10 + params;
+    }
+
+    function addTest(params) {
+      return 20 + params;
+    }
+
+    console.log(addTest(10));  //输出30
+
+    /* 
+      使用函数声明定义函数 和 使用函数表达式定义函数的区别：
+        在代码开始执行前，解析器会通过一个叫函数声明提升的过程，读取并将函数声明添加到执行环境中，
+        也就是说，如果你在使用函数的语句写在了函数声明的语句前面，程序也是可以正确执行的，因为在执行前
+        会优先解析函数声明语句，但是如果你使用函数表达式的方式定义函数，一旦你执行函数的语句在你定义函数的语句之前
+        就会报错。
+    */
+
+    /* 
+      在ECMAscript中，函数本身就是一个变量，所以函数也可以作为值来使用。通俗来讲就是函数可以传递一个函数作为参数。
+    */
+    function callSomeFunction(someFunction, someArgument) {
+      return someFunction(someArgument);
+    }
+
+    function add3(params) {
+      return params + 10;
+    }
+
+    var result = callSomeFunction(add3, 100);
+    console.log(result);
+
+    /* 
+      也可以从一个函数中返回另一个函数。例：假设有一个对象数组，根据某个对象属性对数组进行排序。
+    */
+    function createComparisonFunction(propertyName) {
+
+      return function (object1, object2) {
+        var value1 = object1[propertyName];
+        var value2 = object2[propertyName];
+
+        //这里是升序排序，如果需要改成降序只需要把比较符号的顺序换一下就可以了
+        if (value1 < value2) {
+          return -1;
+        } else if (value1 > value2) {
+          return 1;
+        } else {
+          return 0;
+        }
+        //这是降序排序
+        // if (value1 > value2) {
+        //   return -1;
+        // } else if (value1 < value2) {
+        //   return 1;
+        // } else {
+        //   return 0;
+        // }
+      }
+    }
+
+    var data = [
+      { name: "Zachary", age: 28 },
+      { name: "Nicholas", age: 29 }
+    ];
+
+    data.sort(createComparisonFunction("name"));
+    console.log(data[0].name);
+
+    data.sort(createComparisonFunction("age"));
+    console.log(data[0].name);
+
+    /* 
+      this
+      this的行为与在java和c#中类似。this引用的是函数执行的环境对象。比如说，当在网页的全局作用域中
+      调用函数时，this对象引用的就是window
+    */
+    window.color = "red";
+    var o = { color: "blue" };
+
+    function sayColor() {
+      console.log(this.color);
+    }
+
+    sayColor();             //this指向window
+    sayColor.call(o);       //this指向o
+
+    o.sayColor = sayColor;
+    o.sayColor();           //this指向o
+    o.sayColor.call(this);  //this指向window
+
+    /* 
+      每个function都有自己的call()和apply()方法，这两个方法的作用十分相似，主要是用来改变this的指向，他们的区别在于
+      接收参数的方式不一样：
+        call()：第一个参数是this，其余参数需要逐个列举出来
+        apply()：第一个参数传递的也是this，区别在于其他参数通过一个数组传递
+    */
+    function sum(num1, num2) {
+      return num1 + num2;
+    }
+    function callSum1(num1, num2) {
+      console.log(this);
+      console.log(arguments);
+      return sum.apply(this,arguments);
+    }
+    function callSum2(num1, num2) {
+      return sum.apply(this,[num1,num2]);
+    }
+    function callSum3(num1, num2) {
+
+      return sum.call(this,num1,num2);
+    }
+
+    console.log(callSum1(10,20));
+    console.log(callSum2(10,20));
+    console.log(callSum3(10,20));
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script type="text/javascript">
+
+    /* 
+      javascript通过RegExp类型支持正则表达式，语法如下：
+        var expression = / pattern / flags;
+        flags分为以下三种：
+        1. g：表示全局模式，即模式将被用于所有字符串
+        2. i：表示不区分大小写模式
+        3. m：表示多行模式，在到达一行末尾时还会继续查找下一行中是否存在于模式匹配的项
+    */
+
+
+    // 匹配字符串中所有'at'的实例
+    var pattern1 = /at/g;
+    console.log(pattern1.test("jhhefhatwiueh")); //输出true
+
+    // 匹配第一个bat或cat，不区分大小写
+    var pattern2 = /[bc]at/;
+    console.log(pattern2.test("jhhefhbatwiueh")); //输出true
+
+    // 匹配所有以at结尾的3个字符的组合
+    var pattern3 = /.at/gi;
+    console.log(pattern3.test("jhhefhatwiueh")); //输出true
+
+    // 通过构造函数也可以使用正则表达式
+    var pattern4 = new RegExp("[bc]at","i");  // 匹配第一个bat或cat，不区分大小写
+    console.log(pattern4.test("hvwieuhv9catjiowre"));     //输出true
+
+    /* 
+      \：转义字符，所有的 元字符 都需要进行转义，比如说'.'，它出现在正则表达式中其实是有自己的含义的，但如果你就想匹配一个.的话
+      就需要加转义字符，表示这个.就是一个单纯的.
+    */
+
+    /* 
+      RegExp实例方法：
+        exec()：接受一个参数，即要应用模式的字符串，然后返回包含第一个匹配信息的数组；在没有匹配项的时候返回null。
+    */
+   var test1 = "mom and dad and baby";
+   var pattern5 = /mom( and dad( and baby)?)?/gi;
+
+   var matches1 = pattern5.exec(test1);
+
+   console.log(matches1.index);
+   console.log(matches1.input);
+   console.log(matches1[0]);
+   console.log(matches1[1]);
+   console.log(matches1[2]);
+
+   /* 
+    如果不设置全局属性g的话，在同一个字符串上多次调用exec()每次都只会返回第一个匹配项，只有设置了全局属性才会在下次返回新的匹配项
+   */
+   var test2 = "cat,bat,sat,fat";
+
+   var pattern6 = /.at/;
+   matches2 = pattern6.exec(test2);
+   console.log(matches2.index);
+   console.log(matches2[0]);
+   console.log(pattern6.lastIndex);
+
+   var pattern7 = /.at/g;
+   matches2 = pattern7.exec(test2);
+   console.log(matches2.index);
+   console.log(matches2[0]);
+   console.log(pattern7.lastIndex);
+
+   /* 
+    RegExp构造函数属性：
+      1. input：最近一次要匹配的字符串
+      2. lastMatch：最近一次的匹配项
+      3. lastParen：最近一次匹配的捕获组
+      4. leftContext：input字符串中lastMatch之前的文本
+      5. multiline：布尔值，表示是否所有表达式都是使用多行模式
+      6. rightContext：input字符串中lastMatch之后的文本
+   */
+
+   var text3 = "this has been a short summer";
+   var pattern8 = /(.)hort/gm;
+
+   if(pattern8.test(text3)){
+     console.log(RegExp.input);
+     console.log(RegExp.leftContext);
+     console.log(RegExp.rightContext);
+     console.log(RegExp.lastMatch);
+     console.log(RegExp.lastParen);
+     console.log(RegExp.multiline);
+   }
+
+
+
+  </script>
+</body>
+</html>

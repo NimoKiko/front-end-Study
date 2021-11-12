@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+  /* 
+    基本包装类型：
+      每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能调用一些方法
+      进行操作。
+  */
+  /* 
+    在这个例子中，创建了一个String型的变量s1，s1.substring(2)的这个操作就是因为基本包装类对象，所以可以使用.的方式调用操作
+  */
+  var s1 = "hello world!";
+  var s2 = s1.substring(2);
+  
+  /* 
+    引用类型和基本包装类型的主要区别就是对象生命周期。
+    使用new操作符创建的引用类型实例，在离开当前作用域之前会一直存在，而基本包装类型对象在一行代码执行完毕之后就会销毁
+   */
+  
+  /* 
+    Boolean类型
+      Boolean类型是与布尔值对应的引用类型。创建Boolean对象的语法是：
+        var booleanObject = new Boolean(true);
+      实际上并不推荐使用，使用不当可能会引起误解
+  */
+    var falseObject = new Boolean(false);
+    var res = falseObject && true;  
+    console.log(res); 
+    /* 理论上一个false和true进行&&运算会得出结果false，但实际上这样操作最后的结果是true
+      因为在求值的时候目标是falseObject而不是falseObject内的值，而对象类型在进行布尔表达式的转换的时候都会转成true
+      所以实际上这个语句是在进行 true && true 的判断。所以一般直接使用：
+        var xxx = false;这样的形式是最佳的。
+    */
+
+    /* 
+      Number类型：
+      与Boolean类型一样，构造的语法是：
+        var numObject = new Number(10); 这个10可以是任何数字
+
+      toString()：这个方法通过传入一个表示基数的参数来将数字转化为其他进制下的表示
+      toFixed()：这个方法可以按照传递进的参数，保留几位小数
+      toExponential()：这个方法与toFixed()方法类似，该方法返回以指数表示法表示的数值的字符串形式
+      toPrecision()：该方法可能返回固定大小格式也可能返回指数形式，具体看哪种最合适
+    */
+    var num = 99;
+    console.log(num.toPrecision(1));  //1e+2
+    console.log(num.toPrecision(2));  //99
+    console.log(num.toPrecision(3));  //99.0
+
+    /* 
+      使用typeof操作符测试基本数据类型的时候会返回number，但是测试Number对象的时候会返回object类型
+    */
+
+    /* 
+      String类型：
+        构造方法如下：
+          var stringObject = new String("hello world");
+        String类型每个实例都有length属性，表示字符串中包含了多少字符
+        String类型提供了很多方法：
+          1.字符方法：
+            charAt()：接收一个参数，返回字符串中指定位置的字符
+            charCodeAt()：接受一个参数，返回字符串中指定位置的字符的编码
+            可以通过一个方括号加数字索引的形式来访问字符串中指定字符，eg: string[1];
+          2.字符操作方法：
+            concat()：用于将一个或多个字符串拼接起来，这个方法可以接受任意多个参数，可以拼接任意多个字符串
+              实际操作中使用 + 操作符更普遍也更方便
+            slice()：接受1~2个参数，如果只接受一个参数会返回从指定位置开始到字符串末尾的全部字符，如果有第二个参数则会返回从第一个参数到第二个参数
+                      之间的字符
+            substring()：在接收到正的参数的时候，这个方法的表现和slice()是一样的，但是一旦接收到的参数是负数，substring()会将负数变为0
+            substr()：接收1~2个参数，当只接受一个参数的时候，这个方法的表现和上述两个方法接收一个参数的表现一致，该方法接收到的第二参数
+                      表示从第一个参数的位置开始返回第二个参数的大小这么多个字符
+          3.字符串位置方法：
+            indexOf()：接收1~2个参数，从字符串的开头开始寻找指定字符的位置，如果没找到就返回-1。第一个参数表示要搜寻的字符，
+                        第二个参数表示从什么位置开始搜寻 
+            lastIndexOf()：接收1~2个参数，从字符串的末尾开始寻找指定字符的位置，如果没找到就返回-1。第一个参数表示要搜寻的字符，
+                        第二个参数表示从什么位置开始搜寻 
+          4.trim()：这个方法会创建一个字符串副本，删除前置以及后缀的所有空格
+          5.字符串大小转换方法：
+            toLowerCase()：将字符串中的大写字母转化为小写
+            toUpperCase()：将字符串中的小写字母转化为大写
+            toLocaleLowerCase()：作用与toLowerCase()一致，只是针对特定地区
+            toLocaleUpperCase()：作用与toUpperCase()一致，只是针对特定地区
+            有些少数语言会为Unicode大小写转换应用特殊规则，这时候就需要使用针对地区方法来确保实现正确转换。
+          6.字符串的模式匹配方法：
+            match()：只接受一个参数，要么是一个正则表达式要么是一个RegExp对象。和RegExp对象的exec()方法类似，match()会返回一个数组
+                      数组内是匹配到的字符串
+            search()：这个方法接收的参数与match()一致，它是用来检查是否有匹配的结果，如果没有找到匹配项返回-1，若是找到则会返回
+                      匹配项第一次出现的位置的索引
+            replace()：这个方法接收两个参数，第一个参数可以是一个字符串也可以是一个RegExp对象，第二个参数可以是一个函数也可以一个字符串
+                      如果第一个参数是字符串，则只会替换掉第一个子字符串，要想替换全部则需要提供一个正则表达式，并且要指定全局标志(g)
+            split()：这个方法可以基于指定的分隔符将一个字符串分割成多个子字符串并将结果保存在一个数组内，split的第二个参数可以指定数组大小
+                    ，以确保返回的数组不会超过既定大小。
+          7.localeCompare()方法：
+            这个方法用于比较两个字符串并返回下列值中的一个：
+              1.如果字符串在字母表中的位置在字符串参数之前则返回一个负数，一般情况下是返回-1
+              2.如果字符串等于字符串参数，则返回0
+              3.如果字符串在字母表中的位置在字符串参数之后则返回一个正数，一般情况下是返回1
+    */
+      //字符比较方法
+      var string = "hello world";
+      console.log(string.charAt(1));
+      console.log(string.charCodeAt(1));
+
+      //字符操作方法
+      console.log(string.concat("哈哈哈","123"));
+      console.log(string.slice(3));
+      console.log(string.substring(3));
+      console.log(string.substr(3));
+      console.log(string.slice(3,7));
+      console.log(string.substring(3,-7));
+      console.log(string.substr(3,7));
+
+      //trim()方法
+      var string2 = "        hello world        ";
+      console.log(string2.trim());
+
+      //字符串模式匹配方法
+      var text = "cat,bat,sat,fat";
+      var text2 = "qhwi,cat,bat";
+      var pattern = /.at/g;
+      var match = text.match(pattern);
+      console.log(match);
+      console.log(match.index);
+      console.log(match[0]);
+      console.log(match.lastIndex);
+      var pos = text2.search(pattern);
+      console.log(pos);
+
+      var res = text.replace("at","hh");  //替换at为hh
+      console.log(res);
+      
+      res = text.replace(/at/g,"xx");  //替换全部的at为xx
+      console.log(res);
+
+      var text3 = "abcdefghijklmnopqrstuvwxyz";
+      res = text3.replace(/m/g,"($&)");   //匹配m并将m替换为(m)
+      console.log(res);
+
+      res = text3.replace(/m/g,"($')");   //匹配m并将m替换为(m后面的字符串)
+      console.log(res);
+
+      res = text3.replace(/m/g,"($`)");   //匹配m并将m替换为(m前面的字符串)
+      console.log(res);
+
+      var colorText = "red,blue,yello,black";
+      var color1 = colorText.split(',');
+      var color2 = colorText.split(',',3);
+      var color3 = colorText.split(/[^\,]+/,3);
+      console.log(color1);
+      console.log(color2);
+      console.log(color3);
+      
+      //localeCompare()方法
+      var stringValue = "yellow";
+      console.log(stringValue.localeCompare("brick"));  //yellow是字符串，brick是字符串参数，y在b之后，于是返回正数
+      console.log(stringValue.localeCompare("yellow"));  //yellow是字符串，yellow是字符串参数，两个字符串相等，于是返回0
+      console.log(stringValue.localeCompare("zoo"));  //yellow是字符串，zoo是字符串参数，y在z之前，于是返回负数
+
+  </script>
+</body>
+</html>

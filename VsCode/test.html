@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Document</title>
-  
+
 </head>
+
 <body>
-  
+
   <!-- 这里是页面的内容 -->
 
   <script type="text/javascript">
-  
+
     // JS代码
-    
-    </script>
+
+    for (var i = 0; i < 10; i++) {
+      console.log(i);
+    };
+    alert(i);
+
+    for (let v = 0; v < 10; v++) {
+      console.log(v);
+    }
+    alert(v); //会显示v is not defined
+
+    //if (true) let a = 20; //会报错
+
+    if (true) {
+      let a = 20; //不会报错
+    }
+
+
+  </script>
 </body>
+
 </html>
-
-
-

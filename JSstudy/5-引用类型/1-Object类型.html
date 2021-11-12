@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <script type="text/javascript">
+    /* 
+      创建Object对象的语法：
+        1.使用new关键字：
+          var person = new Object();
+          person.name = "zhangsan";
+        2.使用对象字面量：
+          var person = {
+            name: "zhangsan",
+            age: 29
+          }
+        在向函数传递大量参数的时候，也是更推荐使用对象字面的方式
+    */
+    var person1 = new Object();
+    person1.name = "zhangsan";
+
+    var person2 = {
+      name: "zhangsan",
+      age: 29
+    }
+
+    /* 
+      一般来说在访问对象属性的时候都是使用点表示法：person.name 这样的形式
+      在JavaScript中可以使用方括号语法 person["name"]
+      使用方括号语法的好处是可以实现这样的形式 person["first name"] 这个属性名中间存在空格，使用点表示法就不合适了
+      否则一般情况下还是推荐使用电表示法
+    */
+   console.log(person1["name"]);
+  </script>
+</body>
+
+</html>

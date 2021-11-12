@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    /* 
+      创建数组的两种方法：
+        1.使用Array构造函数：
+          var colors = new Array();
+          var colors = new Array(20); 通过这个数字可以指定数组的长度
+          var colors = new Array("red","yellow","blue"); 也可以直接在构建的时候赋值
+          var colors = Array("red","yellow","blue"); 可以省略关键字new，效果是一样的
+        2.使用数组字面量：
+          var colors = [];  创建一个空数组
+          var colors = ["red","blue","yellow"];  创建一个包含三个字符串的数组
+    */
+    var colors1 = new Array("red", "yellow", "blue");
+
+    var colors2 = ["red", "blue", "yellow"];
+
+    /* 
+      在读取和设置数组的时候需要使用方括号并在其中输入一个从0开始的下标
+      数组的项会保存在length这个属性中
+      设置length属性的值可以移除数组的元素或者在数组末尾添加新元素
+    */
+    console.log(colors1.length);
+
+    /* 
+      转换方法：
+        toString():返回一个由数组中每个字符串拼接而成的字符串
+        toLocaleString():返回一个由数组中每个字符串拼接而成的字符串
+        valueOf():返回的还是数组
+    */
+    console.log(colors1.toString());
+    console.log(colors1.toLocaleString());
+    console.log(colors1.valueOf());
+    console.log(colors1);
+
+    /* 
+      栈方法：
+        push():可以接受任意数量的参数，其作用是将这些元素逐个添加到数组末尾，并返回修改后的数组长度
+        pop():从数组末尾移除一个元素，返回移除的项。这个方法不需要参数
+    */
+    var colors3 = ["red", "blue", "yellow"];
+    console.log(colors3.push("hello", "world"));
+    console.log(colors3);
+    console.log(colors3.pop());
+    console.log(colors3);
+
+    /* 
+      队列方法：
+        shift():移除数组第一项并返回该项，将shift和pop结合使用可以实现队列的效果
+        unshift():在数组前端任意添加项，并返回新数组的长度
+    */
+    var colors4 = ["red", "blue", "yellow"];
+    console.log(colors4.shift());
+    console.log(colors4);
+    console.log(colors4.unshift("hello", "world"));
+    console.log(colors4);
+
+    /* 
+      重排序方法：
+        reverse():反转数组项的次序
+        sort():该方法会调用每个数组项的toString()方法，然后比较得到的字符串确定如何排序。
+                可以通过传入一个比较函数来实现将数字数组按降序或升序排序
+    */
+    function compare(value1, value2) {
+      // if (value1 < value2) {
+      //   return -1;
+      // } else if (value1 > value2) {
+      //   return 1;
+      // } else {
+      //   return 0;
+      // }
+
+      //这是降序排序
+      // if (value1 > value2) {
+      //   return -1;
+      // } else if (value1 < value2) {
+      //   return 1;
+      // } else {
+      //   return 0;
+      // }
+
+      //这是降序排序的简化操作
+      return value2 - value1;
+    }
+
+    var num = [1, 78, 54, 32, 67, 90, 34];
+    console.log(num.sort(compare));
+
+    /* 
+      操作方法：
+        concat():基于当前数组中的所有项创建一个新的数组，会将参数中的数组添加到原有数组后面
+        slice():可以接受1~2个参数
+                如果只有一个参数，则返回从指定的位置开始到最后的全部元素
+                如果有第二个参数，则返回从指定位置开始到结束位置的全部元素，但不包括结束位置的项
+                slice不会影响原始数组
+        splice():这个方法始终会返回一个数组
+            删除：可以删除任意数量的项，需要指定两个参数。第一个参数：要删除的第一项的位置；第二个参数：要删除的项数
+            插入：可以向指定位置插入任意数量的项，需要提供三个参数。第一个参数：起始位置，第二个参数：0，第三个参数：要插入的项
+            替换：可以向指定位置插入任意数量的项，并删掉任意数量的项。需要提供三个参数。
+                  第一个参数：起始位置；第二个参数：要删除的个数；第三个参数：要插入的项
+    */
+    var val = ["hello","world","im","fine","think","you"];
+    console.log(val.slice(2));
+    console.log(val.slice(2,5));
+
+    var val2 = ["hello","world","im","fine","think","you"];
+    console.log(val2.splice(0,2));
+    console.log(val2);
+    console.log(val2.splice(0,0,"hello","world"));
+    console.log(val2);
+    console.log(val2.splice(0,2,"world","hello"));
+    console.log(val2);
+
+    /* 
+      位置方法：
+        indexOf()和lastIndexOf():这两个方法接受两个参数，要查找的项和表示查找起点的项。indexOf是从头开始查，lastIndexOf是从末尾开始查
+        查不到就返回-1
+    */
+    var num2 = [1, 78, 54, 32, 67, 90, 34];
+    console.log(num2.indexOf(32,0));
+    console.log(num2.lastIndexOf(32,4));
+
+    /* 
+      迭代方法：
+        every():对数组中的每一项运行给定函数，如果全是true则返回true
+        filer():对数组中的每一项运行给定函数，只返回true的项组成的数组
+        forEach():对数组中的每一项运行给定函数，该方法没有返回值
+        map():对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组
+        map():对数组中的每一项运行给定函数，如果该函数对任意一项返回true，则返回true
+    */
+    var num3 = [1, 78, 54, 32, 67, 90, 34];
+    var everyRes = num3.every(function (item,index,array) {
+      return (item > 1);
+    })
+    console.log(everyRes);
+
+    var someRes = num3.some(function (item,index,array) {
+      return (item > 1);
+    })
+    console.log(someRes);
+
+    var filterRes = num3.filter(function (item,index,array) {
+      return (item > 32);
+    })
+    console.log(filterRes);
+
+    var mapRes = num3.map(function (item,index,array) {
+      return (item * 2);
+    })
+    console.log(mapRes);
+
+    var forEachRes = num3.forEach(function (item,index,array) {
+      //执行某些操作
+    })
+
+    /* 
+      归并方法：
+        reduce()和reduceRight():这两个方法都会迭代数组所有的项，然后构建一个最终返回的值。reduce是从第一项开始，reduceRight从数组最后一项开始
+        这两个方法都接受两个参数：
+        第一个参数：在每项上调用的函数
+        第二个参数：作为归并基础的初始值
+    */
+    var value = [1,2,3,4,5];
+    var sum = value.reduce(function (pre,cur,index,array) {
+      return pre + cur;
+    })
+    console.log(sum);
+
+  </script>
+</body>
+
+</html>
