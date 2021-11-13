@@ -33,6 +33,10 @@
           ECMAscript没有指出如何访问Global对象，但是浏览器会将全局对象作为window对象的一部分加以实现。通过调用window对象就可以访问Global
           对象。  
     */
+    var uri = "http://www.wrox.com/illegal value.htm#start";
+
+    console.log(encodeURI(uri));          //打印http://www.wrox.com/illegal%20value.htm#start
+    console.log(encodeURIComponent(uri)); //打印http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start  
 
     /* 
       Math对象：

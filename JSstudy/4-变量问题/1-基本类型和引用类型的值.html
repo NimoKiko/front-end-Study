@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script type="text/javascript">
     var obj = {
-      name: "hyf",
+      name: "zhangsan",
       age: 20
     };
     var obj2 = obj;
 
     obj2.age = 30;
-    console.log(obj);
-    console.log(obj2);
+    console.log(obj); //输出age = 30
+    console.log(obj2);//输出age = 30
 
+    function sayName(obj) {
+      obj.name = "zhaosi";
+    }
+    var person = new Object();
+    sayName(person);
+    console.log(person.name);    //会输出zhaosi
+
+    // var color = "blue";
+
+    // function changeColor() {
+    //   if (color == "blue") {
+    //     color = "red";
+    //   } else {
+    //     color = "blue";
+    //   }
+    // }
+
+    // changeColor();
+    // alert("color is now " + color) //提示color is now red
+
+    if(true){
+      let color = "blue";
+    }
+    alert(color);
   </script>
 </body>
+
 </html>
