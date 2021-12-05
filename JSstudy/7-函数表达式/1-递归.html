@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    /* 
+      定义函数的语法有两种：
+        1. 函数声明
+          function functionName(参数1,参数2...){
+            //函数体
+          }
+        2. 函数表达式：
+          var functionName = function(参数1, 参数2, 参数3...){
+            // 函数体
+          }
+          使用函数表达式声明函数没有声明提升，因为函数表达式就和赋值语句
+    */
+    function functionName(arg1, arg2, arg3) {
+      //函数体
+    }
+    //可以通过xxxx.name来查看函数的名字
+    console.log(functionName.name); //输出functionName
+
+    /* 
+      函数声明提升：
+        在执行代码前会先读取函数声明。简单来说就是可以在函数声明之前调用函数。
+    */
+    sayHi();
+    function sayHi() {
+      console.log('hi');
+    }
+    /*
+      因为使用函数声明的方式对函数进行声明会存在变量提升，所以像以下的这个情况就会出现问题
+    */
+    var condition = true;
+    if (condition) {
+      function sayYes() {
+        console.log('yes');
+      }
+    } else {
+      function sayNo() {
+        console.log('no');
+      }
+    }
+    /* 
+      看似会根据condition的值来选择性的声明函数，但实际上，大多数浏览器都会返回第二个声明。
+      但是使用函数表达式的方法就可以实现
+    */
+    if (condition) {
+      var sayYes = function () {
+        console.log('yes');
+      }
+    } else {
+      var sayNo = function () {
+        console.log('no');
+      }
+    }
+
+    /* 
+      递归：
+        递归函数是在一个函数通过名字调用自身的情况下构成的
+    */
+    // function factorial(num) {
+    //   if(num <= 1){
+    //     return 1;
+    //   }else{
+    //     // return num * factorial(num-1);
+
+    //     // 使用arguments.callee代替函数名的使用
+    //     return num * arguments.callee(num-1);
+    //   }
+    // }
+
+    var factorial = (function f(num) {
+      if (num <= 1) {
+        return 1;
+      } else {
+        return num * f(num - 1);
+      }
+    });
+
+    /* 
+      如果这么写就会出错。虽然将factorial函数赋值给了anotherFactorial，但是factorial函数内部对于自己的调用并没有修改
+      在把factorial函数赋值为null之后，anotherFactorial也就会失效。
+      这种情况下有两种方法解决问题：
+        1. 在递归的时候，使用arguments.callee代替函数名，arguments.callee是一个指向正在执行函数的指针，就不会出现因为函数
+        名改变而导致的失效问题
+        2. 使用函数命名表达式来达成相同的结果
+    */
+    var anotherFactorial = factorial;
+    factorial = null;
+    console.log(anotherFactorial(4));
+
+
+
+
+  </script>
+</body>
+
+</html>
