@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+
+    /* 
+      用户代理检测：
+        通过检测用户代理字符串来确定实际使用的浏览器。
+      要正确地识别呈现引擎，关键是需要一个正确的检测顺序：
+        1. 首先检测Opera：因为Opera的用户代理字符串具有很强的迷惑性，在任何情况下它的用户代理字符串都不会将自己识别为Opera
+        2. 放在第二个检测的是WebKit。WebKit的用户代理字符串中包含了“Gecko”和“KHTML”，如果首先检查这两者之中的一个可能得到错误的结果
+        3. 第三个检测的是“KHTML”，因为在KHTML的用户代理字符串中包含了“Gecko”，所以在排除KHTML之前无法判断浏览器是基于Gecko的
+        4. 在排除了KHTML和WebKit之后就可以确定Gecko了。
+        5. 最后一个检测IE。
+    */
+  </script>
+</body>
+</html>

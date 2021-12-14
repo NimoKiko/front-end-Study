@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    /* 
+      怪癖检测：
+        怪癖检测的目标是识别浏览器的特殊行为。检测浏览器存在什么缺陷(bug)
+    */
+
+    /* 
+      这个方法可以用来检测IE8中一个早期的问题：如果某个实例属性与[[Enumerable]]标记为false的某个原型属性同名，
+      那么该实例属性不会出现在for-in中。
+    */
+    var hasDontEnumQuirk = function () {
+      var o = { toString: function () { } };
+      for (var prop in o) {
+        if (prop == "toString") {
+          return false;
+        }
+      }
+      return true;
+    }();
+  </script>
+</body>
+
+</html>

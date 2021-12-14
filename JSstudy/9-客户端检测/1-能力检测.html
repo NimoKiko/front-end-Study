@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    /* 
+      各个浏览器之间存在着差异，优点和缺点都各不相的。面对普遍存在的不一致性问题，使用客户端检测是一种处理的方法
+      但是不到万不得已还是不推荐使用客户端检测。只要能找到更通用的方法，就要优先采用通用的方法。
+    */
+
+    /* 
+      能力检测：
+        能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。能力检测的基本模式如下：
+          if(object.propertyInQuestion) {
+            //使用object.propertyInQuestion
+          }
+    */
+
+    //检测浏览器是否支持document.getElementById()这个DMO方法
+    function getElement(id) {
+      if (document.getElementById) {
+        return document.getElementById(id);
+      } else if (document.all) {
+        return document.all[id];
+      } else {
+        throw new Error("no way to retrieve element!");
+      }
+    }
+    /* 
+      对于上述例子来说因为document.getElementById()这个方法是解决这一问题的标准方法，所以一开始就检测了这个方法。
+      在使用能力检测前要记住，优先检测达成目的最常用的特性，这样做可以保证代码最优化，可以避免测试多个条件。
+      第二点，一个特性存在不意味着另一个特性也存在。
+    */
+
+    /* 
+      能力检测对于想知道某个特性会否按照适当的方式形式非常有用。在上述例子中只是检测了是否存在这个成员，但是你还是不知道这个成员是不是你想要
+      的。以检测一个对象是否支持排序来看，如果仅仅检测这个对象是不是有这个方法，其实并不准确，如果这个对象有和这个排序方法同名的属性，那么检测
+      的结果也会是true，但是实际却和你想要的结果大相径庭。这时候，通过typeof判断这个方法是不是函数类型会比判断这个方法是否存在更可靠。
+      可以的话，要尽量使用typeof进行能力检测。
+    */
+
+    /* 
+      双逻辑非操作符（!!）：
+        双逻辑非操作，会把一个值（数字，字符串…..）转换为布尔值。第一次逻辑非操作取反的布尔，第二次获得最初元素本身对应的布尔。
+        使用双逻辑非操作符得到布尔值，比先储存后访问的效果更好，这里先储存说的就是先储存布尔值。
+        
+    */
+    alert(!!false);     //false
+
+    alert(!!"blue");    //true
+
+    alert(!!0);         //false
+
+    alert(!!NaN)        //false
+
+    alert(!!12345)      //true
+  </script>
+</body>
+
+</html>
