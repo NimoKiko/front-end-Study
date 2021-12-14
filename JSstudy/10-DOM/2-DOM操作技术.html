@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+
+    /* 
+      动态脚本：
+        创建动态脚本的方法有两种：
+          1. 插入外部文件
+          2. 直接插入JavaScript代码
+        通过src引入的外部js文件可以直接执行，通过DOM代码实现加载方式在把script元素加入页面之前是不会执行的
+
+    */
+    // var script = document.createElement("script");
+    // script.type = "text/javascript";
+    // script.src = "2.1-out.js";
+    // document.head.appendChild(script);
+
+    // 可以用函数将这一过程封装
+    function loadScript(url) {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = url;
+      document.head.appendChild(script);
+    }
+    loadScript("2.1-out.js");
+
+    /* 
+      动态样式：
+        动态创建样式的方法有两种：
+          1. 通过<link>元素将外部的css样式引入
+          2. 通过DOM代码实现（方法与动态脚本类似）
+    */
+  </script>
+</body>
+
+</html>

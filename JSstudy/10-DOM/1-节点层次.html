@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <button id="btn1">buton1</button>
+  <button name="btn">btn</button>
+  <button name="btn">btn</button>
+  <button name="btn">btn</button>
+  <button>btn</button>
+  <button>btn</button>
+
+  <ul id="list">
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ul>
+
+  <br><br><br>
+
+  <!-- 没有内容，就没有文本节点 -->
+  <div></div>
+  <!-- 有空格就有文本节点 -->
+  <div> </div>
+  <!-- 有内容就有文本节点 -->
+  <div>哈哈</div>
+
+  <script type="text/javascript">
+
+    /*
+      DOM可以将任何HTML或XML文档描绘成一个由多层节点构成的结构：
+        <html>
+          <head>
+            <title>Document</title>
+          </head>
+          <body>
+            <div>内容</div>
+          </body>
+        </html>
+      这就是一个最简单的树形结构
+    */
+
+    /*
+      文档中所有的节点都有一定的层级关系，用易于理解的语言来描述这种关系可以表示为父子关系，比如：<head>元素就是<html>元素的子元素
+      反过来说<html>元素就是<head>元素的父元素。
+        每个节点都有一个childNodes属性，其中保存着一个NodeList对象，用于保存一组有序的节点。
+        访问保存在NodeList中的方法有两种：
+          1. 使用方括号语法：var firstChild = someNode.childNode[0];
+          2. 使用item()方法：var secondChild = someNode.item(1);
+    */
+
+    /* 
+      2. 节点关系
+        每个节点都由parentNode属性，该属性指向文档树中的父节点。在childNodes列表中的每个节点都是同胞节点。
+        可以通过previousSibling和nextSibling属性访问到前一个或下一个节点。第一个元素没有前一个，同理最后一个节点没有后一个
+        父节点还由两个属性：firstChild和lastChild，这两个属性分别指向其childNOdes列表中的第一个和最后一个节点
+    */
+
+    /* 
+      3. 操作节点
+        常用的方法：
+          appendChild()：用于向子节点列表末尾添加一个节点。
+          insertBefore()：将节点插入到子节点列表中的指定位置。该方法接受两个参数，要插入的节点和作为参照的节点。
+                          被插入的节点会成为参照节点的前一个节点。
+          replaceChild()：将指定的节点移除并替换为指定的新节点。该方法接收两个参数：要插入的节点和要替换的节点。
+          removeChild()：移除节点。这个方法接受一个参数，即要移除的节点。
+    */
+
+    /* 
+      Document类型：
+        最常用的作用是作为HTMLDocument实例的document对象。通过这个对象可以取得页面的信息并且操作页面的外观及底层结构。
+    */
+
+    var html = document.documentElement;
+    console.log(html === document.childNodes[1]);
+
+    // 取得文档的title
+    var title = document.title;
+    console.log(title);
+    //设置文档标题
+    document.title = 'new title';
+    // 取得完整的URL
+    var url = document.URL;
+    console.log(url);
+    // 取得域名
+    var domain = document.domain;
+    console.log(domain);
+    // 取得来源页的URL  
+    var referrer = document.referrer;
+    console.log(referrer);
+
+    /* 
+      查找元素：
+        getElementById()：通过id查询元素
+        getElementByTagName()：通过标签名查询元素
+        getElementByName()：通过元素的name查询元素
+    */
+    var btn1 = document.getElementById("btn1");
+    console.log(btn1);
+    var btns = document.getElementsByTagName("button");
+    console.log(btns);
+    var names = document.getElementsByName("btn");
+    console.log(names);
+
+    /* 
+      使用write()和writeln()方法可以动态地向页面中添加内容
+    */
+    document.writeln("<strong>" + (new Date()).toString() + "</strong>");
+    document.writeln("<strong>" + (new Date()).toString() + "</strong>");
+    document.write("<strong>" + (new Date()).toString() + "</strong>");
+
+    //如果在文档加载结束后再调用write则会重写整个页面
+    // window.onload = function () {
+    //   document.write("你好");
+    // }
+
+    /* 
+      Element类型：
+        作为除了document类型之外web编程中最常用的类型。用于表现XML或HTML元素，提供了对元素标签名、子节点及特性的访问。
+    */
+    console.log(btn1.tagName);  //"BUTTON"
+    /* 
+      事实上在HTML标签中所有的标签都是大写的形式，但是在XML或XHTML中，标签都是保持源码中的样子，所以在你对这些标签名
+      进行比较的时候建议将tagName先使用toLowerCase()转化为小写之后再进行比较。
+    */
+
+    /* 
+      获取特性：
+        操作特性的DOM方法主要有三个：
+          1. getAttribute()：获取特性，接受一个参数为想要获取的特性名。
+          2. setAttribute()：设置特性，接收两个参数，要设置的特性名和值。但是由于所有特性都是属性，推荐直接通过属性设置特性
+    */
+    console.log(btn1.getAttribute("id"));
+    // 通过属性设置特性
+    btn1.id = "btn2";
+    console.log(btn1.id);
+
+    /* 
+      attributes属性：
+        element类型是使用attributes属性的唯一一个DOM节点类型。可以通过attributes属性查找特性和设置特性
+        但这很麻烦，一般也没人用。但是用来遍历元素特性的时候，还是很方便的。
+    */
+
+    /* 
+      创建元素：
+        通过使用document.createElement()方法可以创建新元素，这个方法只接受一个参数就是要创建的元素的标签名。
+    */
+    var newNode = document.createElement("div");
+    // 可以给新创建的元素添加特性
+    newNode.id = "myNewDiv";
+    newNode.className = "box";
+    // 但是这样只是创建了新元素并给他加入了信息，并没有添加到文档上。
+    // 使用appendChild()方法将新节点添加到文档上
+    document.body.appendChild(newNode);
+
+    /* 
+      元素的子节点：
+        元素可以由任意数目的子节点和后代节点，在元素的childNodes属性中包含了所有的子节点
+    */
+    var ul = document.getElementById("list");
+    console.log(ul.childNodes);
+    //  可以通过父节点找到后代节点
+    var items = ul.getElementsByTagName("li");
+    console.log(items);
+
+    /* 
+      Text类型：
+        表示文本节点，包含的是纯文本内容。纯文本中可以包含转义后的HTML字符，但不能包含HTML代码。
+        在HTML中有文本节点就能取到。
+    */
+    // 创建元素
+    var element = document.createElement("div");
+    element.className = "message";
+    // 创建文本节点
+    var textNode = document.createTextNode("Hello World~");
+    // 把文本加入到新创建的节点中去
+    element.appendChild(textNode);
+
+    var anotherNode = document.createTextNode("bulubulu");
+    element.appendChild(anotherNode);
+    // 把节点加入到文本中去
+    document.body.appendChild(element);
+    // normalize()方法可以将所有文本节点合并成一个节点
+    element.normalize();
+
+    /*
+      上述例子的整体流程是：
+        1. 创建节点，这时候只是有一个叫div的节点，但是节点不在文档上，其中也没有任何内容
+        2. 创建文本节点，这个文本节点可以用来给刚刚创建的节点添加内容，使用appendChild()方法将文本节点添加到新节点中去
+        3. 昨晚上述步骤之后现在就有一个有内容的节点，但这个节点现在还不在文档上，需要使用appendChild()将节点加入到document.body中去
+        4. 这时候运行代码才能在文档上加载出来
+    */
+
+    /*
+      分割文本节点：
+        这是一个和normalize()方法作用相反的方法：
+        splitText()：这个方法会将一个文本节点分成两个文本节点
+    */
+    var newNode = element.firstChild.splitText(5);
+    console.log(element);
+    console.log(element.firstChild.nodeValue);
+    console.log(newNode.nodeValue);
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
