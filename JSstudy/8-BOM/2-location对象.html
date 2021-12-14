@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    /* 
+      location对象：
+        既是window对象的属性，也是document对象的属性
+        location对象的所有属性：
+          1. hash：返回URL中的hash(锚)，如果URL中不包含散列，则返回空字符串
+            eg：http://www.runoob.com/test.htm＃PART2 中 #PART2 就是会返回的值
+          2. host：返回服务器名称和端口号（如果有）
+          3. hostname：返回不带端口号的服务器名称
+          4. href：返回当前页面加载的完整URL
+          5. pathname：返回URL中的目录和文件名
+          6. port：返回URL中指定的端口号
+          7. protocol：返回页面使用的协议
+          8. search：返回URL的查询字符串
+            eg：http://www.runoob.com/submit.htm?email=someone@example.com 中 ?email=someone@example.com 是其中的查询部分
+    */
+
+    function getQueryStringArgs() {
+      //取得查询字符串并去掉开头的问号
+      var qs = (location.search.length > 0 ? location.search.substring(1) : ""),//substring()方法是获取从指定位置开始到结尾的字符串
+
+        //保存数据的对象
+        args = {},
+
+        //取得每一项
+        items = qs.length ? qs.split("&") : [], //split()方法将字符串以“&”为分隔生成数组
+        item = null,
+        name = null,
+        value = null,
+        //在 for 循环中使用
+        i = 0,
+        len = items.length;
+      //逐个将每一项添加到 args 对象中
+      for (i = 0; i < len; i++) {
+        item = items[i].split("=");
+        name = decodeURIComponent(item[0]);
+        value = decodeURIComponent(item[1]);
+        if (name.length) {
+          args[name] = value;
+        }
+      }
+
+      return args;
+    }
+
+  </script>
+</body>
+
+</html>

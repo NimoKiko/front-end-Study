@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <button id="btn" onclick="click()">点击</button>
+  <script type="text/javascript">
+    /* 
+      window对象：
+        1. 通过JavaScript访问浏览器的一个接口
+        2. Global对象：网页中定义的任何一个对象都以window作为其global对象
+    */
+    /* 
+      这段代码就解释了window作为全局的global，可以调用网页中的任何参数和函数
+    */
+    var age = 29;
+    function sayAge() {
+      console.log(this.age);
+    }
+
+    console.log(window.age);
+    sayAge();
+    window.sayAge();
+
+    /* 
+      定义全局变量和定义在window对象上的属性的区别是：
+        定义在全局的变量不能通过delete删除，但是定义自爱window上的属性可以通过的delete删除
+    */
+    window.color = 'red';
+
+    delete window.age;
+
+    delete window.color;
+
+    console.log(window.age);
+    console.log(window.color);
+
+    var pageWidth = window.innerWidth;
+    var pageHeight = window.innerHeight;
+
+    if (typeof pageWidth != "number") {
+      if (document.compatMode == "CSS1Compat") {
+        pageWidth = document.documentElement.clientWidth;
+        pageHeight = document.documentElement.clientHeight;
+      } else {
+        pageWidth = document.body.clientWidth;
+        pageHeight = document.body.clientHeight;
+      }
+    }
+
+    var btn = document.getElementById('btn');
+
+    btn.click = function () {
+      // console.log("click");
+      var test = window.open("http://baidu.com", "_blank", "height=400,width=400,top=400,right=0,resizable=yes");
+
+      test.resizeTo(600, 600);
+      test.moveTo(200, 200);
+    }
+
+    // var blocked = false;
+
+    // try {
+    //   var wroxWin = window.open("http://www.wrox.com", "_blank");
+    //   if (wroxWin == null) {
+    //     blocked = true;
+    //   }
+    // } catch (ex) {
+    //   blocked = true;
+    // }
+    // if (blocked) {
+    //   alert("The popup was blocked!");
+    // }
+
+    /* 
+      间歇调用和超时调用：
+        1. 超时调用：在指定的时间过后执行代码
+          setTimeOut()方法：接收两个参数：
+            1. 可以是一个包含要执行代码的字符串也可以是一个函数，建议是函数
+            2. 以毫秒表示的时间
+          可以通过clearTimeOut()方法取消尚未执行的超市调用计划
+        2. 间歇调用：每隔指定的时间就执行一次代码
+          setInterval()方法：接受两个参数
+            1. 可以是一个包含要执行代码的字符串也可以是一个函数，建议是函数
+            2.用毫秒表示对时间
+    */
+
+    var timeoutId = setTimeout(() => {
+      console.log("hello world!");
+    }, 3000);
+
+    // 这样就不会执行超时调用中函数体内要执行的代码了
+    clearTimeout(timeoutId);
+    var num = 0;
+    var intervalId = setInterval(() => {
+      if (num == 4) {
+        clearInterval(intervalId);
+      }
+      console.log(num);
+      num++;
+    }, 2000);
+
+    /* 
+      对话框有三种形式：alert(),confirm(),prompt()
+        alert：弹出一个警告框
+        confirm：弹出一个确认框，可以选择确定或取消。通过监听点击确定还是取消返回的布尔值进行操作
+        prompt：除了有确定和取消按钮之外，还有一个输入框
+    */
+
+    //confirm对话框
+    if (confirm("are you sure?")) {
+      alert("l'm so glad you are sure");
+    } else {
+      alert("i'm sorry to hear you are not sure");
+    }
+
+    //prompt对话框
+    var res = prompt("what's your name?","");
+    if(res){
+      alert("hello,"+res);
+    }
+
+
+  </script>
+</body>
+
+</html>

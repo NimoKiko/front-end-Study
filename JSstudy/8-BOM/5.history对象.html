@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    /* 
+      history对象保存着用户上网的历史记录，从窗口打开的那一刻开始算起。
+        go()方法 ：可以在用户的历史记录中任意跳转，这个方法接受一个参数，表示向前或向后跳转的一个数值
+    */
+    history.go(1);  //前进1页
+    history.go(-1); //后退1页
+    history.go(2);  //前进2页
+
+    /*
+     可以使用back()和forward()方法来后退和前进
+    */
+    history.back();     //后退一页
+    history.forward();  //前进一页
+
+  </script>
+</body>
+
+</html>
