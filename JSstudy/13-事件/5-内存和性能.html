@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="myList">
+    <li id="goSomething">go something</li>
+    <li id="doSomething">do something</li>
+    <li id="sayHi">say Hi</li>
+  </ul>
+
+  <script type="text/javascript">
+
+    /* 
+      在最外层的元素上添加事件，然后通过事件冒泡的行为来执行子级的行为，这就是委托。
+    */
+    var myList = document.getElementById("myList");
+    myList.onclick = function (params) {
+      var target = params.target;
+
+      switch (target.id) {
+        case "goSomething":
+          location.href = "http://www.baidu.com";
+          break;
+        case "daSomething":
+          document.title = "i changed the title";
+          break;
+        case "sayHi":
+          alert("sayHi");;
+          break;
+      }
+    }
+
+    /* 
+      移出事件处理程序的必要性：
+        在某些应用场景下，可能会有点击一个按钮，将按钮替换成一段文字的情况，这时候，按钮确实是被移除了，但是
+        事件处理程序仍然和按钮关联，它在内存中仍然占有一定的空间，所以如果这种情况下，后续不会再使用到这个按钮了
+        可以主动把事件处理程序移出释放内存。
+    */
+  </script>
+</body>
+
+</html>

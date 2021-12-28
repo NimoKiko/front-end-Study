@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <div id="father">
+    <div id="son">
+      <div id="grandson">
+        <button id="btn1">btn1</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+    /* 
+      事件对象：
+        在触发DOM事件的时候会生成一个event对象，其中包含了和事件相关的全部信息。
+    */
+    var btn1 = document.getElementById("btn1");
+    btn1.onclick = function (event) {
+
+      console.log(4);
+
+      /* 
+        阻止事件冒泡：
+          使用event.stopPropagation()方法阻止事件冒泡
+      */
+      event.stopPropagation();
+      // alert(event.type);  //打印事件的类型
+
+      //以下这三者是相同的，这是因为点击事件的目标是按钮，所以这些值都相同，但如果点击事件绑定在
+      //父级元素里，那就会不同了
+      console.log(event.target);
+      console.log(event.currentTarget);
+      console.log(this);
+    }
+
+    /* 
+      preventDefault()；阻止事件的默认行为，例如链接的默认行为是跳转
+      stopPropagation()：阻止事件冒泡
+    */
+
+    var grandson = document.getElementById("grandson");
+    var son = document.getElementById("son");
+    var father = document.getElementById("father");
+
+    grandson.onclick = function (params) {
+      console.log(3);
+    }
+    son.onclick = function (params) {
+      console.log(2);
+    }
+    father.onclick = function (params) {
+      console.log(1);
+    }
+  </script>
+</body>
+</html>
